@@ -21,82 +21,87 @@
 
     function renderHtml() {
         const root = document.getElementById("root");
-        //root.innerHTML = "";
+        root.innerHTML = "";
         const unorderedList = document.createElement("ul");
-        root.appendChild("ul");
+        root.appendChild(unorderedList);
+        const li = document.createElement('li');
+        unorderedList.appendChild(li);
 
-        for (let ul = bookList.length; ul <= 0; ul++) {
-            const li = document.createElement('li');
-            ul.appendChild("li");
-            li.innerHTML = bookList;
+
+        for (let bookList = 0; bookList <= bookList.length; bookList++) {
+
+            li.innerHTML = bookList[0];
+
         }
-    }
 
+    }
+    renderHtml()
     /*4.Make an object containing information for each book. Each item(object) in this object 
     should have the book ID you thought up in point 1 as a key, and it should have at least 
     the following fields: title, language and author.*/
 
-    let never_let_me_go1 = {
-        title: "Never Let Me Go",
-        language: "English",
-        author: "Kazuo Ishiguro"
-    };
+    const bookDetails = {
+        never_let_me_go1 = {
+            title: "Never Let Me Go",
+            language: "English",
+            author: "Kazuo Ishiguro"
+        },
 
-    let stalingrad2 = {
-        title: "Stalingrad",
-        language: "English",
-        author: "Anthony Beevor"
-    };
+        stalingrad2 = {
+            title: "Stalingrad",
+            language: "English",
+            author: "Anthony Beevor"
+        },
 
-    let berlin3 = {
-        title: "Berlin",
-        language: "English",
-        author: "Anthony Beevor"
-    };
+        berlin3 = {
+            title: "Berlin",
+            language: "English",
+            author: "Anthony Beevor"
+        },
 
-    let dune4 = {
-        title: "Dune",
-        language: "English",
-        author: "Frank Herbert"
-    };
+        dune4 = {
+            title: "Dune",
+            language: "English",
+            author: "Frank Herbert"
+        },
 
-    let chitty_on_contracts5 = {
-        title: "Chitty on Contracts",
-        language: "English",
-        author: "Chitty et al"
-    };
+        chitty_on_contracts5 = {
+            title: "Chitty on Contracts",
+            language: "English",
+            author: "Chitty et al"
+        },
 
-    let stap3_schaak6 = {
-        title: "Stap 3 extra: Schaak",
-        language: "Dutch",
-        author: "Cor van Wijgerden"
-    };
+        stap3_schaak6 = {
+            title: "Stap 3 extra: Schaak",
+            language: "Dutch",
+            author: "Cor van Wijgerden"
+        },
 
-    let theory_and_practice_on_echr7 = {
-        title: "Theory and Practice on the European Convention on Human Rights",
-        language: "English",
-        author: "van Dijk et al"
-    };
+        theory_and_practice_on_echr7 = {
+            title: "Theory and Practice on the European Convention on Human Rights",
+            language: "English",
+            author: "van Dijk et al"
+        },
 
-    let napoleon8 = {
-        title: "Napoleon Bonaparte",
-        language: "English",
-        author: "Luke Grayson"
-    };
+        napoleon8 = {
+            title: "Napoleon Bonaparte",
+            language: "English",
+            author: "Luke Grayson"
+        },
 
-    let mein_kampf9 = {
-        title: "Mein Kampf",
-        language: "German",
-        author: "Adolf Hitler"
-    };
+        mein_kampf9 = {
+            title: "Mein Kampf",
+            language: "German",
+            author: "Adolf Hitler"
+        },
 
-    let war_and_peace10 = {
-        title: "War and Peace",
-        language: "Russian",
-        author: "Leo Tolstoy"
-    };
+        war_and_peace10 = {
+            title: "War and Peace",
+            language: "Russian",
+            author: "Leo Tolstoy"
+        },
 
-
+    }
     /*5.Now change the function you used to display the book ID's in a list to take the
     actual information about the book from the object and display that. 
     Make sure you choose the right html elements for each piece of info, 
