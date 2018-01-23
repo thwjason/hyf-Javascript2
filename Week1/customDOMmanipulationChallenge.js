@@ -19,93 +19,160 @@
     /*3.Make a function (or functions) that generate a ul with li elements for each book ID 
     in the array using a for loop.*/
 
+    /* Function is commented out because I am making a new one for step 5
+    
     function renderHtml() {
         const root = document.getElementById("root");
         root.innerHTML = "";
         const unorderedList = document.createElement("ul");
         root.appendChild(unorderedList);
+
+        for (let idx = bookList[0]; idx < bookList.length; idx++) {
+            const li = document.createElement('li');
+            unorderedList.appendChild(li);
+            li.innerHTML = bookList[idx];
+            console.log(bookList[idx]);
+        }
+    
+        
+
+    //* This is an alternative way of coding (it reduces the change of screwing up things like 
+        idx <= bookList.length, where "<=" is wrong):
+    
+    for (const book of bookList) {
+    
         const li = document.createElement('li');
         unorderedList.appendChild(li);
-
-
-        for (let bookList = 0; bookList <= bookList.length; bookList++) {
-
-            li.innerHTML = bookList[0];
-
-        }
-
+        li.innerHTML = book;
     }
+}
     renderHtml()
-    /*4.Make an object containing information for each book. Each item(object) in this object 
+        */
+
+    /*4.Make an object containing information for each book. Each item(object) in this object
     should have the book ID you thought up in point 1 as a key, and it should have at least 
     the following fields: title, language and author.*/
 
     const bookDetails = {
-        never_let_me_go1 = {
+        never_let_me_go1: {
             title: "Never Let Me Go",
             language: "English",
-            author: "Kazuo Ishiguro"
+            author: "Kazuo Ishiguro",
         },
 
-        stalingrad2 = {
+        stalingrad2: {
             title: "Stalingrad",
             language: "English",
-            author: "Anthony Beevor"
+            author: "Anthony Beevor",
         },
 
-        berlin3 = {
+        berlin3: {
             title: "Berlin",
             language: "English",
-            author: "Anthony Beevor"
+            author: "Anthony Beevor",
         },
 
-        dune4 = {
+        dune4: {
             title: "Dune",
             language: "English",
-            author: "Frank Herbert"
+            author: "Frank Herbert",
         },
 
-        chitty_on_contracts5 = {
+        chitty_on_contracts5: {
             title: "Chitty on Contracts",
             language: "English",
-            author: "Chitty et al"
+            author: "Chitty et al",
         },
 
-        stap3_schaak6 = {
+        stap3_schaak6: {
             title: "Stap 3 extra: Schaak",
             language: "Dutch",
-            author: "Cor van Wijgerden"
+            author: "Cor van Wijgerden",
         },
 
-        theory_and_practice_on_echr7 = {
+        theory_and_practice_on_echr7: {
             title: "Theory and Practice on the European Convention on Human Rights",
             language: "English",
-            author: "van Dijk et al"
+            author: "van Dijk et al",
         },
 
-        napoleon8 = {
+        napoleon8: {
             title: "Napoleon Bonaparte",
             language: "English",
-            author: "Luke Grayson"
+            author: "Luke Grayson",
         },
 
-        mein_kampf9 = {
+        mein_kampf9: {
             title: "Mein Kampf",
             language: "German",
-            author: "Adolf Hitler"
+            author: "Adolf Hitler",
         },
 
-        war_and_peace10 = {
+        war_and_peace10: {
             title: "War and Peace",
             language: "Russian",
-            author: "Leo Tolstoy"
-        },
+            author: "Leo Tolstoy",
+        }
 
     }
+
+
+
     /*5.Now change the function you used to display the book ID's in a list to take the
     actual information about the book from the object and display that. 
     Make sure you choose the right html elements for each piece of info, 
     for instance, a heading for the title.*/
+
+    /*
+    function(bookIntricate){ 
+        for (const book of bookList) {
+            const bookDetail = bookDetails[book];
+            const bookTitle = bookDetail.title;
+            const bookLanguage = bookDetail.language;
+            const bookAuthor = bookDetail.author;
+        } 
+    }*/
+
+
+
+    function fullDisplay() {
+        const root = document.getElementById("root");
+        root.innerHTML = "";
+        const unorderedList = document.createElement("ul");
+        root.appendChild(unorderedList);
+        for (let j = bookList[0]; j < bookList.length; j++) {
+            const li = document.createElement("li");
+            unorderedList.appendChild(li);
+            li.innerHTML = bookList[j];
+            console.log(bookList[j]);
+
+            let bookIds = bookDetails[j].id;
+            let title = bookDetails[j].title;
+            let language = bookDetails[j].language;
+            let author = bookDetails[j].author;
+            let h1 = document.createElement("h1");
+            let h2 = document.createElement("h2");
+            let h3 = document.createElement("h3");
+            let img = document.createElement("img");
+
+            h1.innerHTML = "Title : " + title;
+            h2.innerHTML = "Language : " + language;
+            h3.innerHTML = "Author : " + author;
+
+            li.setAttribute('id', 'idOfBooks');
+
+            li.appendChild(h1);
+
+            for (let k of Object.keys(images)) {
+                let bookPictures = images[k];
+                if (bookIds == k) {
+                    img.src = bookPictures;
+                    img.alt = k;
+                }
+            }
+        }
+    }
+    fullDisplay();
 
     /*6. Beautify your html page with css, add sources and alts to each of the images.*/
 
@@ -117,5 +184,17 @@
     Remember that Objects are not ordered, so you cannot guarantee that the first key is
     the first li element. (Hint: you could give each li item an id tag by modifying the 
     function you made before)*/
+    let images = {
+        never_let_me_go1: 'pictures/neverLetMeGo.jpeg',
+        stalingrad2: 'pictures/stalingrad.jpeg',
+        berlin3: 'pictures/berlin.jpeg',
+        dune4: 'pictures/dune.jpeg',
+        chitty_on_contracts5: 'pictures/chittyOnContracts.jpeg',
+        stap3_schaak6: 'pictures/',
+        theory_and_practice_on_echr7: 'pictures/',
+        napoleon8: 'pictures/napoleon.jpeg',
+        mein_kampf9: 'pictures/meinKampf.jpeg',
+        war_and_peace10: 'pictures/'
+    };
 
 })();
