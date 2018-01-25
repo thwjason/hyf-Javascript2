@@ -6,9 +6,19 @@
     These strings should be of book titles you have read (or made up) and be lowercase 
     without spaces or special characters so that you can use these later as Id's. 
     (Example: Harry Potter's - The Chamber of Secrets -> harry_potter_chamber_secrets).*/
-    let bookList = ["never_let_me_go1", "stalingrad2", "berlin3", "dune4",
-        "chitty_on_contracts5", "stap3_schaak6", "theory_and_practice_on_echr7",
-        "napoleon8", "mein_kampf9", "war_and_peace10"];
+
+    const bookList = [
+        "never_let_me_go1",
+        "stalingrad2",
+        "berlin3",
+        "dune4",
+        "chitty_on_contracts5",
+        "stap3_schaak6",
+        "theory_and_practice_on_echr7",
+        "napoleon8",
+        "mein_kampf9",
+        "war_and_peace10"
+    ];
 
     /*2 Create a basic html file called index.html and use it to load the js file, 
     confirm the console.log show the array. (This is for debugging and making sure 
@@ -138,52 +148,44 @@
     function fullDisplay() {
         const root = document.getElementById("root");
         root.innerHTML = "";
+        const title = document.createElement("h1");
+        root.appendChild(title);
+        title.innerHTML = "This is short list of 10 books, comrade.";
         const unorderedList = document.createElement("ul");
         root.appendChild(unorderedList);
-        for (let j = bookList[0]; j < bookList.length; j++) {
+        
+        let keys = bookList;
+
+
+        for (let j = 0; j < bookList.length; j++) {
+            const key = bookList[j];
+            const details = bookDetails[key];
             const li = document.createElement("li");
             unorderedList.appendChild(li);
-            li.innerHTML = bookList[j];
+
+
             console.log(bookList[j]);
 
-            let bookIds = bookDetails[j].id;
-            let title = bookDetails[j].title;
-            let language = bookDetails[j].language;
-            let author = bookDetails[j].author;
-            let h1 = document.createElement("h1");
-            let h2 = document.createElement("h2");
-            let h3 = document.createElement("h3");
-            let img = document.createElement("img");
+            // let title = bookDetails[key].title;
+            // let language = bookDetails[j].language;
+            // let author = bookDetails[j].author;
+            const h1 = document.createElement("h1");
+            const h2 = document.createElement("h2");
+            const h3 = document.createElement("h3");
 
-            h1.innerHTML = "Title : " + title;
-            h2.innerHTML = "Language : " + language;
-            h3.innerHTML = "Author : " + author;
 
-            li.setAttribute('id', 'idOfBooks');
+            h1.innerHTML = "Title : " + details.title;
+            h2.innerHTML = "Language : " + details.language;
+            h3.innerHTML = "Author : " + details.author;
+
+            li.setAttribute('id', key);
 
             li.appendChild(h1);
+            li.appendChild(h2);
+            li.appendChild(h3);
 
-            for (let k of Object.keys(images)) {
-                let bookPictures = images[k];
-                if (bookIds == k) {
-                    img.src = bookPictures;
-                    img.alt = k;
-                }
-            }
         }
     }
-    fullDisplay();
-
-    /*6. Beautify your html page with css, add sources and alts to each of the images.*/
-
-    /*7. Download book covers for each book, construct a new Object which has as keys 
-    the bookId's again, and as value the path to the image source 
-    (e.g. {"harry_potter_blabla": "./img/harry_potter_blabla.jpg", ...}). 
-    Now loop over these entries (hint: Object.keys(objectName) gives you an array containing 
-    the keys). Then write a function which places an image at the corresponding li element. 
-    Remember that Objects are not ordered, so you cannot guarantee that the first key is
-    the first li element. (Hint: you could give each li item an id tag by modifying the 
-    function you made before)*/
     let images = {
         never_let_me_go1: 'pictures/neverLetMeGo.jpeg',
         stalingrad2: 'pictures/stalingrad.jpeg',
@@ -196,5 +198,41 @@
         mein_kampf9: 'pictures/meinKampf.jpeg',
         war_and_peace10: 'pictures/'
     };
+
+    function displayImages() {
+        for (let j = 0; j < bookDetails.keys; j++) {
+            const key = bookDetails.keys[j];
+            const li = document.getElementById(key);
+            const img = document.createElement("img");
+            img.setAttribute("src", images[key]);
+            li.appendChild(img);
+            console.log(images.keys[j]);
+        }
+    }
+    fullDisplay();
+    displayImages()
+
+    /*6. Beautify your html page with css, add sources and alts to each of the images.*/
+
+    /*7. Download book covers for each book, construct a new Object which has as keys 
+    the bookId's again, and as value the path to the image source 
+    (e.g. {"harry_potter_blabla": "./img/harry_potter_blabla.jpg", ...}). 
+    Now loop over these entries (hint: Object.keys(objectName) gives you an array containing 
+    the keys). Then write a function which places an image at the corresponding li element. 
+    Remember that Objects are not ordered, so you cannot guarantee that the first key is
+    the first li element. (Hint: you could give each li item an id tag by modifying the 
+    function you made before)*/
+   /* let images = {
+        never_let_me_go1: 'pictures/neverLetMeGo.jpeg',
+        stalingrad2: 'pictures/stalingrad.jpeg',
+        berlin3: 'pictures/berlin.jpeg',
+        dune4: 'pictures/dune.jpeg',
+        chitty_on_contracts5: 'pictures/chittyOnContracts.jpeg',
+        stap3_schaak6: 'pictures/',
+        theory_and_practice_on_echr7: 'pictures/',
+        napoleon8: 'pictures/napoleon.jpeg',
+        mein_kampf9: 'pictures/meinKampf.jpeg',
+        war_and_peace10: 'pictures/'
+    };*/
 
 })();

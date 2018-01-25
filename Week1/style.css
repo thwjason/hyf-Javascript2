@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(44, 112, 133);
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    list-style-type: none;
+}
+
+li {
+    width: 40%;
+    background-color: rgb(241, 227, 21);
+    padding: 15px;
+    margin: 10px;
+    border: 4px ridge rgb(133, 44, 100);
+}
+
+h1 {
+    font-family: Georgia, serif;
+    color: rgb(233, 8, 38);
+}
+
+
+img {
+    height: auto;
+    margin: 10px;
+}
