@@ -192,25 +192,26 @@
         berlin3: 'pictures/berlin.jpeg',
         dune4: 'pictures/dune.jpeg',
         chitty_on_contracts5: 'pictures/chittyOnContracts.jpeg',
-        stap3_schaak6: 'pictures/',
+        stap3_schaak6: 'pictures/stap3extra.jpg',
         theory_and_practice_on_echr7: 'pictures/',
         napoleon8: 'pictures/napoleon.jpeg',
         mein_kampf9: 'pictures/meinKampf.jpeg',
-        war_and_peace10: 'pictures/'
+        war_and_peace10: 'pictures/warAndPeace.jpeg'
     };
 
-    function displayImages() {
-        for (let j = 0; j < bookDetails.keys; j++) {
-            const key = bookDetails.keys[j];
+    function displayImages(keys) {
+        for (let j = 0; j < keys.length; j++) {
+            const key = keys[j];
             const li = document.getElementById(key);
             const img = document.createElement("img");
             img.setAttribute("src", images[key]);
             li.appendChild(img);
-            console.log(images.keys[j]);
         }
     }
+    const keys = Object.keys(bookDetails); // this is an array
     fullDisplay();
-    displayImages()
+    displayImages(keys);  // calls the function and sending keys as its argument
+    
 
     /*6. Beautify your html page with css, add sources and alts to each of the images.*/
 
@@ -228,11 +229,12 @@
         berlin3: 'pictures/berlin.jpeg',
         dune4: 'pictures/dune.jpeg',
         chitty_on_contracts5: 'pictures/chittyOnContracts.jpeg',
-        stap3_schaak6: 'pictures/',
+        stap3_schaak6: 'pictures/stap3extra.jpg',
         theory_and_practice_on_echr7: 'pictures/',
         napoleon8: 'pictures/napoleon.jpeg',
         mein_kampf9: 'pictures/meinKampf.jpeg',
-        war_and_peace10: 'pictures/'
+        war_and_peace10: 'pictures/warAndPeace.jpeg'
     };*/
-
+    console.log("This is the keys of bookDetails:", keys); // ["never_let_me_go1", "stalingrad2", "berlin3", "dune4", "chitty_on_contracts5", "stap3_schaak6", "theory_and_practice_on_echr7", "napoleon8", "mein_kampf9", "war_and_peace10"]
+    console.log("typeof keyes:", typeof keys); // typeof keyes: object
 })();
